@@ -2,7 +2,9 @@ package com.bridge.LinkedList;
 
 import java.util.Scanner;
 
-
+/**
+ * Hello world!
+ */
 public class LinkedListMain {
     public static void main(String[] args) {
         System.out.println("Welcome to linkedList DataStructure Program");
@@ -12,6 +14,8 @@ public class LinkedListMain {
         System.out.println("Enter 3 to insert data inBetween");
         System.out.println("Enter 4 to delete data of first node");
         System.out.println("enter 5 to delete data of last node");
+        System.out.println("Enter 6 to find index number,node with value 30 in linked list");
+        System.out.println("Enter 7 to Add data after searching required data");
         switch (scanner.nextInt()) {
             case 1:
                 Operations.addDataAtStart();
@@ -30,6 +34,10 @@ public class LinkedListMain {
                 break;
             case 6:
                 Operations.findNodeBasedOnValue();
+                break;
+            case 7:
+                Operations.insertAfterSearchNode();
+                break;
         }
 
     }
