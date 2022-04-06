@@ -1,117 +1,143 @@
 package com.bridge.LinkedList;
 
 public class LinkedList {
-    Node head;
-    Node tail;
+	Node head;
+	Node tail;
 
-    public Node push(int data) {
-        Node newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            Node temp = head;
-            this.head = newNode;
-            newNode.next = temp;
-        }return newNode;
-    }
+	public Node push(int data) {
+		Node newNode = new Node(data);
+		if (head == null) {
+			head = newNode;
+			tail = newNode;
+		} else {
+			Node temp = head;
+			this.head = newNode;
+			newNode.next = temp;
+		}
+		return newNode;
+	}
 
-    public void print() {
-        if (head == null) {
-            System.out.println("Linked List is Empty");
-        } else {
-            Node temp = head;
-            while (temp != null) {
-                if(temp.next != null)
-                System.out. print(temp.data + " -> ");
-                else System.out.println(temp.data);
-                temp = temp.next;
-            }
+	public void print() {
+		if (head == null) {
+			System.out.println("Linked List is Empty");
+		} else {
+			Node temp = head;
+			while (temp != null) {
+				if (temp.next != null)
+					System.out.print(temp.data + " -> ");
+				else
+					System.out.println(temp.data);
+				temp = temp.next;
+			}
 
-        }
-    }
+		}
+	}
 
-    public void append(int data) {
-        Node newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            this.tail.next = newNode;
-            tail = newNode;
-        }
-    }
-    public void insertInBetween(Node previousNode ,Node newNode){
-        Node tempNode = previousNode.next;
-        previousNode.next = newNode;
-        newNode.next = tempNode;
-    }
+	public void append(int data) {
+		Node newNode = new Node(data);
+		if (head == null) {
+			head = newNode;
+			tail = newNode;
+		} else {
+			this.tail.next = newNode;
+			tail = newNode;
+		}
+	}
 
-    public void pop() {
-        this.head = this.head.next;
-    }
+	public void insertInBetween(Node previousNode, Node newNode) {
+		Node tempNode = previousNode.next;
+		previousNode.next = newNode;
+		newNode.next = tempNode;
+	}
 
-    public void popLast() {
-        Node tempNode= head;
-        while(!tempNode.next.equals(tail)){
-            tempNode=tempNode.next;
-        }
-        this.tail = tempNode;
-        tempNode.next =null;
-    }
-    public Node searchNode(int value) {
-        Node tempNode = head;
-        int index = 1;
-        boolean flag = false;
-        if (head == null) {
-            System.out.println("List is empty");
-        } else {
-            while (tempNode != null) {
-                if (tempNode.data == value) {
-                    flag = true;
-                    break;
-                }
-                index++;
-                tempNode = tempNode.next;
-            }
-        }
-        if (flag) {
-            System.out.println("Value:" + value + " is present at Index:" + index);
-        } else {
-            System.out.println("Element no present");
-        }
-        return tempNode;
-    }
+	public void pop() {
+		this.head = this.head.next;
+	}
 
-    public Node searchNodeAt(int value, Node newNode) {
-        Node tempNode = head;
-        if (head == null) {
-            System.out.println("List is empty");
-        } else {
-            while (tempNode != null) {
-                if (tempNode.data == value) {
-                    break;
-                }
-                tempNode = tempNode.next;
+	public void popLast() {
+		Node tempNode = head;
+		while (!tempNode.next.equals(tail)) {
+			tempNode = tempNode.next;
+		}
+		this.tail = tempNode;
+		tempNode.next = null;
+	}
 
-            } Node tempNodeNext = tempNode.next;
-            tempNode.next = newNode;
-            newNode.next = tempNodeNext;
-        }
-        return tempNode;
-    }
-    public void deleteANode(int value) {
-        if (this.head == null) {
-            System.out.println("List is Empty");
-            return;
-        }
-        Node tempNode = head;
-        while (tempNode.next.data != value) {
-            tempNode = tempNode.next;
-        }
-        Node previousNode = tempNode;
-        Node nextNode = tempNode.next.next;
-        previousNode.next = nextNode;
-    }
+	public Node searchNode(int value) {
+		Node tempNode = head;
+		int index = 1;
+		boolean flag = false;
+		if (head == null) {
+			System.out.println("List is empty");
+		} else {
+			while (tempNode != null) {
+				if (tempNode.data == value) {
+					flag = true;
+					break;
+				}
+				index++;
+				tempNode = tempNode.next;
+			}
+		}
+		if (flag) {
+			System.out.println("Value:" + value + " is present at Index:" + index);
+		} else {
+			System.out.println("Element no present");
+		}
+		return tempNode;
+	}
+
+	public Node searchNodeAt(int value, Node newNode) {
+		Node tempNode = head;
+		if (head == null) {
+			System.out.println("List is empty");
+		} else {
+			while (tempNode != null) {
+				if (tempNode.data == value) {
+					break;
+				}
+				tempNode = tempNode.next;
+
+			}
+			Node tempNodeNext = tempNode.next;
+			tempNode.next = newNode;
+			newNode.next = tempNodeNext;
+		}
+		return tempNode;
+	}
+
+	public void deleteANode(int value) {
+		if (this.head == null) {
+			System.out.println("List is Empty");
+			return;
+		}
+		Node tempNode = head;
+		while (tempNode.next.data != value) {
+			tempNode = tempNode.next;
+		}
+		Node previousNode = tempNode;
+		Node nextNode = tempNode.next.next;
+		previousNode.next = nextNode;
+	}
+
+	public void sort() {
+		Node initialStart = head, index = null;
+		if (head == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		while (initialStart != null) {
+			index = initialStart.next;
+			while (index != null) {
+				if (initialStart.data > index.data) {
+					int temp = initialStart.data;
+					initialStart.data = index.data;
+					index.data = temp;
+				}
+				index = index.next;
+			}
+			initialStart = initialStart.next;
+		}
+	}
 
 }

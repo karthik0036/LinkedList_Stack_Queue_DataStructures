@@ -6,7 +6,6 @@ public class Operations {
         linkedList.push(70);
         linkedList.push(30);
         linkedList.push(56);
-        linkedList.print();
         return linkedList;
     }
 
@@ -33,34 +32,42 @@ public class Operations {
 
     public static void deleteFirstNode() {
         LinkedList linkedList = addDataAtStart();
-       linkedList.pop();
-       linkedList.print();
+        linkedList.pop();
+        linkedList.print();
     }
 
     public static void deleteLastNode() {
         LinkedList linkedList = addDataAtStart();
         linkedList.popLast();
         linkedList.print();
-
     }
+
     public static void findNodeBasedOnValue() {
         LinkedList linkedList = addDataAtStart();
         linkedList.searchNode(30);
     }
+
     public static LinkedList insertAfterSearchNode() {
-        LinkedList linkedList= addDataAtStart();
+        LinkedList linkedList = addDataAtStart();
         Node newNode = new Node(40);
         Node previousNode = linkedList.searchNodeAt(30, newNode);
-        System.out.println("Before");
         linkedList.print();
-		return linkedList;
+        return linkedList;
     }
+
     public static void deleteAfterNodeAfterSearchNode() {
-        System.out.println("Before");
+        System.out.println("Before deleting the node");
         LinkedList linkedList = insertAfterSearchNode();
-        System.out.println("after");
+        System.out.println("after deleting the node");
         linkedList.deleteANode(40);
         linkedList.print();
     }
 
+    public static void sortList() {
+        System.out.println("before sorting the list");
+        LinkedList linkedList = insertAfterSearchNode();
+        linkedList.sort();
+        System.out.println("after sorting the list");
+        linkedList.print();
+    }
 }
