@@ -28,6 +28,8 @@ public class LinkedListMain {
             case 5:
                 Operations.deleteLastNode();
                 break;
+            case 6:
+                Operations.findNodeBasedOnValue();
         }
 
     }
